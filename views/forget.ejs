@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/forget.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="row">
+		<h1>Forgot Password</h1>
+		<h6 class="information-text">Enter your registered username and new password .</h6>
+        <form action="/sendmail" method="post">
+            <div class="form-group">
+                <input type="email" name="email" id="user_email">
+                <p><label for="username">Email</label></p>
+
+
+                <!-- <input type="password" name="newPassword" id="user_email">
+                <p><label for="username">New Password</label></p> -->
+
+                <button onclick="showSpinner()">Send OTP</button>
+            </div>
+        </form>
+		
+		<div class="footer">
+			<h5>New here? <a href="/">Sign Up.</a></h5>
+			<h5>Already have an account? <a href="/">Sign In.</a></h5>
+			<!-- <p class="information-text"><span class="symbols" title="Lots of love from me to YOU!">&hearts; </span><a href="https://www.facebook.com/adedokunyinka.enoch" target="_blank" title="Connect with me on Facebook">Yinka Enoch Adedokun</a></p> -->
+		</div>
+	</div>
+    <!-- <form action="/forget" method="post">
+        <input type="text" name="username" placeholder="username">
+        <input type="password" name="newPassword" placeholder="newPassword">
+        <input type="submit" value="submit">
+    </form> -->
+</body>
+</html>

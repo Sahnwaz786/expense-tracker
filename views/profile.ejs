@@ -1,0 +1,117 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>👋 <%= admin.username %></h1>
+    <a href="/createexpense">Add New Expense</a>
+    <form action="/filter" >
+        <select name="key" id="">
+            <option value="amount">Amount</option>
+            <option value="remark">Remark</option>
+            <option value="category">Category</option>
+            <option value="paymentmode">Paymentmode</option>
+            <option value="date">Date</option>
+        </select>
+        <input type="text" name="value" placeholder="Enter search term">
+        <button>filter</button>
+        <h1>Sum: <%= expenses.reduce((ac,cv) => ac+cv.amount, 0)%></h1>
+        <%= JSON.stringify(expenses)%>
+     
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Expense Tracker App</title>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" 
+        rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+</head>
+<body>
+    <header>
+        <h1 class="title">Expense Tracker App</h1>
+    <header>
+      
+
+    <section class="content">
+        <h1>👋 <%= admin.username %></h1>
+        <h3 class="secondTitle">Add a new item: </h3>
+        <div class="form">
+            <form action="/createexpense" method="post" id="expForm">
+                <div class="formLine left">
+                    <span for="Type">Type:</span>
+                    <select name="paymentmode" id="type">
+                        <option value="chooseOne">Choose one...</option>
+                        <option value="check">Check</option>
+                        <option value="cash">Cash</option>
+                        <option value="online">Online</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="formLine right">
+                    <span for="name">Name:</span>
+                    <input type="text" name="name" id="name">
+                </div>
+
+                <div class="formLine left">
+                    <span for="date">Date:</span>
+                    <input type="date" name="date" id="date">
+                </div>
+                <div class="formLine right">
+                    <span for="amount">Amount:</span>
+                    <input type="text" name="amount" id="amount">
+                </div>
+                <button type="submit" class="buttonSave">Add a new expense</button>
+                
+            </form>
+            <!-- <form id="expForm">
+                
+            </form> -->
+        </div>
+    </section>
+    <section class="content">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Payment Type</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody id="expenseTable">
+                
+                    <tr>
+                        <% expenses.forEach((expense)=> { %>
+                            <td><%= expense.paymentmode %></td>
+                            <td><%= expense.name %></td>
+                            <td> <%= expense.createdAt.toString().split(' ').slice(1,4).join('-') %></td>
+                            <td><%= expense.amount %></td>
+                          
+                            <td>
+                                <a href="/delete/<%= expense._id %>">Delete</a> &nbsp;&nbsp;
+                                <a href="/update/<%= expense.id %>">Update</a>
+                            </td>
+            
+                             </tr>
+                            <% }) %>
+                   
+              
+           
+            </tbody>
+        </table>
+        
+
+    </section>
+    
+</body>
+</html>
